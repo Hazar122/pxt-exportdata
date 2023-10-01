@@ -1,6 +1,6 @@
-// @param text - the string to convert to JSON
-// @param returns - the JSON object
-// @category Custom
-function stringToJson(text: string) {
-    return JSON.parse(text)
+//% color=190 weight=100 icon="\f0ae" advanced=true
+namespace JSON{
+    function stringToJson(text: string) {
+        return JSON.parse(text)
+    }
 }
