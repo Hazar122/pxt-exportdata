@@ -1,15 +1,13 @@
-namespace JSON {
+//% color=190 weight=100 advanced=true icon="\uf0ae"
+//% groups=['JSON', 'others']
+namespace ExportDataAsJson {
+
     //% block
-    export function stringToJson(text: string) {
-        return JSON.parse(text)
-    }
-    //% block
-    export function intToString(num: number): string {
-        return num.toString();
-    }
-    //% block
+    //% group="JSON"
     export function jsonToText(json: any): string {
         return JSON.stringify(json);
     }
+
+
 
 }
