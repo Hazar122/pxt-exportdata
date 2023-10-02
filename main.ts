@@ -1,31 +1,7 @@
 //% color=190 weight=100 advanced=true icon="\uf0ae"
 //% groups=['JSON', 'others']
 namespace ExportDataAsJson {
-    
-    export interface KeyValue {
-        [key: string]: any;
-    }
-
-    //% block="create JSON object with key $key and value $value"
-    //% group="JSON"
-    export function createJsonObject1(key: string, value: any): KeyValue {
-        return { key, value };
-    }
-    //% block="convert JSON object to text $json"
-    //% group="JSON"
-    export function jsonToText(json: KeyValue[]): string {
-        const jsonObject2: { [key: string]: any } = {};
-
-        for (const kvp of json) {
-            jsonObject2[kvp.key] = kvp.value;
-        }
-
-        return JSON.stringify(jsonObject2);
-    }
-
-    //% block
-    //% group="JSON"
-    export class KeyValuePair {
+    class KeyValuePair {
         key: string;
         value: any;
 
@@ -33,5 +9,28 @@ namespace ExportDataAsJson {
             this.key = key;
             this.value = value;
         }
+    }
+    
+    //% block="New KVP with | Key: $key and | Value: $value"
+    //% group="JSON"
+    export function keyValuePair(key: string, value: any): KeyValuePair {
+        return new KeyValuePair(key, value);
+    }
+
+    // Function to convert a list of KeyValuePair objects into JSON
+    //% block="Convert kvp List to JSON using | List: $list"
+    //% group="JSON"
+    export function kvpListToJson(list: KeyValuePair[]): any {
+        let jsonObj: any = {};
+        for (let kvp of list) {
+            jsonObj[kvp.key] = kvp.value;
+        }
+        return jsonObj;
+    }
+
+    //% block="Convert JSON to Text | JSON: $jsonObj"
+    //% group="JSON"
+    export function jsonToText(jsonObj: any): string {
+        return JSON.stringify(jsonObj);
     }
 }
