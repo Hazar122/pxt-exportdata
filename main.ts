@@ -7,5 +7,9 @@ namespace JSON {
     export function intToString(num: number): string {
         return num.toString();
     }
+    //% block
+    export function jsonToText(json: any): string {
+        return JSON.stringify(json);
+    }
 
 }
